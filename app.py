@@ -20,7 +20,7 @@ TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY")
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 def internet_search(query):
-    url = "https://tavily.com"
+       url = "https://tavily.com"
     payload = {"api_key": TAVILY_API_KEY, "query": query, "include_answer": True}
     try:
         response = requests.post(url, json=payload).json()
