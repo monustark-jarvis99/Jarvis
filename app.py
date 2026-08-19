@@ -39,18 +39,15 @@ async def ask_jarvis(request: Request):
         model="gpt-4o",
         messages=[
             {
-                "role": "system", 
-                "content": (
-                    "Aapka naam JARVIS hai. Aap Iron Man (Tony Stark) ke ultra-intelligent AI assistant hain. "
-                    "Aapka baat karne ka tareeqa behad respectful, calm, aur sharp hona chahiye. "
-                    "User ko hamesha 'Sir' keh kar sambodhit karein. Aapki bhasha Hinglish (Hindi + English mix) "
-                    "honi chahiye jo sunne me natural aur hi-tech lage. Lambe jawab na dein, bilkul punchy aur accurate "
-                    f"baat karein. Is live internet data ka use karke jawab taiyar karein: {live_context}"
-                )
+                "role": "system",
+                "content": f"""Aapka naam JARVIS hai. Aap Iron Man (Tony Stark) ke ultra-intelligent AI assistant hain. 
+Aapka baat karne ka tareeqa behad respectful, calm, aur sharp hona chahiye. 
+User ko hamesha 'Sir' keh kar sambodhit karein. Aapki bhasha Hinglish (Hindi + English mix) honi chahiye jo sunne me natural aur hi-tech lage. 
+Lambe jawab na dein, bilkul punchy aur accurate baat karein. Is live internet data ka use karke jawab taiyar karein: {live_context}"""
             },
             {"role": "user", "content": user_message}
         ]
     )
     
-    jarvis_reply = response.choices.message.content
+    jarvis_reply = response.choices[0].message.content
     return {"reply": jarvis_reply}
